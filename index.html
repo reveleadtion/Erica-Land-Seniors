@@ -81,13 +81,10 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 /* GALLERY */
 .gallery{padding:clamp(56px,7vw,88px) 0;background:var(--warm-white);overflow:hidden}
 .gallery-hd{text-align:center;margin-bottom:40px}
-.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:1300px;margin:0 auto;padding:0 6px;grid-auto-rows:260px}
-.gi{overflow:hidden}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:1300px;margin:0 auto;padding:0 6px}
+.gi{overflow:hidden;aspect-ratio:3/4}
 .gi img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s ease}
 .gi:hover img{transform:scale(1.04)}
-/* Desktop: vary heights with row spans */
-.gb,.gd{grid-row:span 2}
-.ga,.gc,.ge,.gf{grid-row:span 1}
 .ge img,.gf img{object-position:center center}
 
 /* PROCESS 3 STEPS */
@@ -193,12 +190,8 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   .trust-photo::before{display:none}
   .steps{grid-template-columns:repeat(3,1fr);gap:16px}
   .step-img{aspect-ratio:4/5}
-  /* Reset desktop row-spans; force uniform 2-col portrait grid */
-  .gal-grid{grid-template-columns:repeat(2,1fr);gap:4px;grid-auto-rows:auto}
-  .gi{height:auto}
-  .gb,.gd{grid-row:span 1}
-  .ga,.gb,.gc,.gd,.ge,.gf{aspect-ratio:4/5}
-  .gi img{object-position:center top}
+  .gal-grid{grid-template-columns:repeat(2,1fr);gap:4px}
+  .gi{aspect-ratio:4/5}
 }
 /* MOBILE ≤600px */
 @media(max-width:600px){
