@@ -78,6 +78,15 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .badge-n{font-family:var(--serif);font-size:2.1rem;font-weight:300;font-style:italic;color:var(--dusty);line-height:1}
 .badge-l{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gray);margin-top:3px}
 
+/* TRUST BAR */
+.trust-bar{background:#fff;border-top:1px solid #edeae7;border-bottom:1px solid #edeae7;padding:clamp(28px,4vw,44px) 0;overflow:hidden}
+.trust-bar-inner{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,52px);flex-wrap:wrap;padding:0 clamp(20px,5vw,48px);max-width:1200px;margin:0 auto}
+.tb-badge{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.tb-badge img{height:clamp(52px,7vw,80px);width:auto;object-fit:contain;filter:grayscale(1);opacity:.72;transition:filter .3s,opacity .3s}
+.tb-badge:hover img{filter:grayscale(0);opacity:1}
+.tb-divider{width:1px;height:40px;background:#ddd;flex-shrink:0}
+.trust-bar-label{text-align:center;padding-top:clamp(14px,2vw,20px);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#aaa;font-family:var(--sans)}
+
 /* GALLERY */
 .gallery{padding:clamp(56px,7vw,88px) 0;background:var(--warm-white);overflow:hidden}
 .gallery-hd{text-align:center;margin-bottom:40px}
@@ -233,6 +242,9 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   .pkg-card{padding:28px 20px}
   .hero-btns,.final-btns{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:260px;text-align:center}
+  .tb-divider{display:none}
+  .trust-bar-inner{gap:16px 24px}
+  .tb-badge img{height:44px}
 }
 </style>
 </head>
@@ -289,6 +301,47 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
     </div>
   </div>
 </section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <!-- Readers Choice / Potomac Lifestyle 2025 Winner -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/3UYiGrqEQCJ_gdij9FZJRg/320354/golden_badge.png" alt="Readers Choice 2025 Winner – Potomac Lifestyle" loading="lazy">
+    </div>
+    <div class="tb-divider" aria-hidden="true"></div>
+    <!-- Best of Potomac 2026 -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/Fy3i4xedsGWWSshG8Tgexg/320354/best_of_2026_black.png" alt="Best of Potomac 2026" loading="lazy">
+    </div>
+    <div class="tb-divider" aria-hidden="true"></div>
+    <!-- Best of Bethesda 2026 -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/GBb3BqG7jhSdIp9fNkY1Mg/320354/best_of_bethesda_icon_winner_2026_copy.png" alt="Best of Bethesda Winner 2026" loading="lazy">
+    </div>
+    <div class="tb-divider" aria-hidden="true"></div>
+    <!-- Senior Year Magazine -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/NL7mHZduCSi7UX8WnBgDVg/320354/erica_land_photography_featured_02.png" alt="Senior Year Magazine" loading="lazy">
+    </div>
+    <div class="tb-divider" aria-hidden="true"></div>
+    <!-- Senior Inspire -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/xPiLl2MLkZ6q0a0XTvz6PA/320354/erica_land_photography_featured_04.png" alt="Senior Inspire Top 100" loading="lazy">
+    </div>
+    <div class="tb-divider" aria-hidden="true"></div>
+    <!-- Modern Teen Style -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/KWD3QC6pZskXVtcEXhR6lg/320354/erica_land_photography_featured.png" alt="Modern Teen Style – 25 Most Influential" loading="lazy">
+    </div>
+    <div class="tb-divider" aria-hidden="true"></div>
+    <!-- Senior Muse / Featured 03 -->
+    <div class="tb-badge">
+      <img src="https://static.showit.co/200/fK7chxHcEjGfqg0DvQ2UIw/320354/erica_land_photography_featured_03.png" alt="Senior Muse Featured" loading="lazy">
+    </div>
+  </div>
+  <p class="trust-bar-label">Awards for Potomac Lifestyle &amp; Best of Bethesda · Published in Senior Year, Senior Inspire &amp; More</p>
+</div>
 
 <!-- GALLERY -->
 <section class="gallery">
