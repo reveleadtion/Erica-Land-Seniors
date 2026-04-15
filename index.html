@@ -19,6 +19,34 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+<!-- Engaged Visit Event (75% scroll depth) -->
+<script>
+(function() {
+  var fired = false;
+
+  function getScrollPercent() {
+    var doc = document.documentElement;
+    var scrollTop = window.scrollY || doc.scrollTop;
+    var scrollHeight = doc.scrollHeight - doc.clientHeight;
+    return scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  }
+
+  function onScroll() {
+    if (!fired && getScrollPercent() >= 75) {
+      fired = true;
+      fbq('trackCustom', 'EngagedVisit', {
+        scroll_depth: '75',
+        page: window.location.href
+      });
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+<!-- End Engaged Visit Event -->
   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
