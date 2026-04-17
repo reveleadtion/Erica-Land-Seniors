@@ -28,10 +28,14 @@ src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-<!-- Engaged Visit Event (75% scroll depth) -->
+<!-- Engagement Tracking — Qualified Lead Signals -->
 <script>
 (function() {
-  var fired = false;
+  var engagedFired = false;
+  var pricingFired = false;
+  var formFired = false;
+  var pageStart = Date.now();
+  var MIN_TIME_MS = 30000; // must spend ≥30s on page
 
   function getScrollPercent() {
     var doc = document.documentElement;
@@ -40,21 +44,64 @@ src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1"
     return scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
   }
 
-  function onScroll() {
-    if (!fired && getScrollPercent() >= 75) {
-      fired = true;
+  // EngagedVisit — requires BOTH 75% scroll AND ≥30s on page
+  function checkEngaged() {
+    if (engagedFired) return;
+    if ((Date.now() - pageStart) >= MIN_TIME_MS && getScrollPercent() >= 75) {
+      engagedFired = true;
       fbq('trackCustom', 'EngagedVisit', {
         scroll_depth: '75',
+        time_on_page: Math.round((Date.now() - pageStart) / 1000),
         page: window.location.href
       });
-      window.removeEventListener('scroll', onScroll);
     }
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  // Pricing & form section visibility — high-intent signals
+  function checkSections() {
+    var vh = window.innerHeight * 0.75;
+
+    if (!pricingFired) {
+      var pkg = document.getElementById('packages');
+      if (pkg && pkg.getBoundingClientRect().top < vh) {
+        pricingFired = true;
+        fbq('trackCustom', 'ViewedPricing', { page: window.location.href });
+      }
+    }
+
+    if (!formFired) {
+      var booking = document.getElementById('booking');
+      if (booking && booking.getBoundingClientRect().top < vh) {
+        formFired = true;
+        fbq('trackCustom', 'ViewedBookingForm', { page: window.location.href });
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    checkEngaged();
+    checkSections();
+  }, { passive: true });
+
+  // Re-check every 5s so the time gate can trigger after scroll is already past 75%
+  var ticker = setInterval(function() {
+    checkEngaged();
+    if (engagedFired) clearInterval(ticker);
+  }, 5000);
+
+  // CTA click — bottom-funnel signal
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href="#booking"], a[href="#packages"]');
+    if (el) {
+      fbq('trackCustom', 'ClickedCTA', {
+        cta_text: el.textContent.trim().slice(0, 50),
+        page: window.location.href
+      });
+    }
+  });
 })();
 </script>
-<!-- End Engaged Visit Event -->
+<!-- End Engagement Tracking -->
   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
