@@ -260,13 +260,14 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--lgray);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
 .dot.a{background:var(--dusty);transform:scale(1.25)}
 
-/* PACKAGE */
+/* ============================================
+   PACKAGE — desktop (unchanged two-column)
+   ============================================ */
 #packages{padding:clamp(64px,9vw,116px) 0;background:var(--cream)}
 .pkg-hd{text-align:center;margin-bottom:clamp(36px,5vw,60px)}
 .pkg-hd .body{max-width:500px;margin:0 auto;text-align:center}
 .pkg-note{font-size:.74rem;color:var(--gray);font-style:italic;text-align:center;margin-top:9px;letter-spacing:.05em}
 
-/* Desktop two-column card */
 .pkg-card{background:var(--charcoal);display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:960px;margin:0 auto}
 .pkg-col-left{padding:clamp(32px,5vw,52px) clamp(24px,4vw,44px);border-right:1px solid rgba(255,255,255,.08)}
 .pkg-col-right{padding:clamp(32px,5vw,52px) clamp(24px,4vw,44px);display:flex;flex-direction:column}
@@ -292,6 +293,9 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .pkg-right-bottom{margin-top:auto;padding-top:28px}
 .pkg-right-price-block{margin-bottom:24px}
 .pkg-right-tagline{font-family:var(--serif);font-size:1.05rem;font-style:italic;font-weight:300;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:20px}
+
+/* Mobile-only price hero block (hidden on desktop) */
+.pkg-mobile-price{display:none}
 
 /* FORM */
 #booking{padding:clamp(60px,8vw,96px) 0;background:var(--warm-white)}
@@ -339,7 +343,11 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   .pkg-card{grid-template-columns:1fr;max-width:540px}
   .pkg-col-left{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
 }
-/* MOBILE ≤600px */
+
+/* ============================================
+   MOBILE ≤600px — PRICING REBUILT
+   Lead with the NUMBER, then name, desc, lists
+   ============================================ */
 @media(max-width:600px){
   .about-grid{gap:24px}
   .wpm-grid{gap:24px}
@@ -359,9 +367,99 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   nav.s{padding:10px 16px}
   .nav-logo-img{height:26px}
   .nav-btn{font-size:.6rem;padding:8px 13px}
-  .pkg-card{padding:0}
   .hero-btns,.final-btns{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:260px;text-align:center}
+
+  /* --- PRICING CARD MOBILE REBUILD --- */
+  .pkg-card{
+    grid-template-columns:1fr;
+    max-width:100%;
+    padding:0;
+    margin:0 auto;
+  }
+
+  /* SHOW mobile price hero, HIDE desktop right-col price block */
+  .pkg-mobile-price{
+    display:block;
+    text-align:center;
+    padding:44px 28px 36px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .pkg-mobile-price .pkg-name{
+    margin-bottom:18px;
+    font-size:.6rem;
+    color:rgba(255,255,255,.5);
+  }
+  .pkg-mobile-price .pkg-price{
+    font-size:3.6rem;
+    margin-bottom:10px;
+    line-height:1;
+  }
+  .pkg-mobile-price .pkg-lbl{
+    font-size:.62rem;
+    letter-spacing:.16em;
+    color:rgba(255,255,255,.5);
+    margin:0;
+    text-transform:uppercase;
+  }
+
+  /* LEFT column: remove top price-area padding, tighten spacing */
+  .pkg-col-left{
+    padding:36px 28px 32px;
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .pkg-col-left .pkg-name{
+    text-align:center;
+    margin-bottom:14px;
+  }
+  .pkg-col-left .h2{
+    text-align:center;
+    font-size:1.55rem !important;
+    margin-bottom:20px !important;
+    line-height:1.25;
+  }
+  .pkg-col-left .pkg-rule{
+    margin:0 auto 20px;
+  }
+  .pkg-col-left .pkg-desc{
+    text-align:center;
+    margin-bottom:24px;
+    font-size:.88rem;
+  }
+  .pkg-list li{
+    padding:9px 0;
+    font-size:.82rem;
+  }
+
+  /* RIGHT column: hide the desktop price block, keep product list + CTA */
+  .pkg-col-right{
+    padding:36px 28px 40px;
+  }
+  .pkg-right-hide-mobile{display:none !important;}
+
+  .pkg-col-right .pkg-sub-hd{
+    text-align:center;
+    margin-bottom:16px;
+    padding-bottom:14px;
+    font-size:.6rem;
+  }
+  .pkg-sub-list li{
+    padding:9px 0;
+    font-size:.82rem;
+  }
+
+  .pkg-right-bottom{
+    padding-top:28px;
+    margin-top:24px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .pkg-right-tagline{
+    text-align:center;
+    font-size:1.02rem;
+    margin-bottom:24px;
+    padding:0 4px;
+  }
 }
 </style>
 </head>
@@ -635,7 +733,11 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
-<!-- PACKAGE -->
+<!-- ============================================
+     PACKAGE SECTION
+     Desktop: two-column unchanged
+     Mobile: price hero leads → package details → product options → CTA
+     ============================================ -->
 <section id="packages">
   <div class="wrap">
     <div class="pkg-hd r">
@@ -647,6 +749,14 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
     </div>
 
     <div class="pkg-card r">
+
+      <!-- MOBILE-ONLY price hero — leads with the number -->
+      <div class="pkg-mobile-price">
+        <p class="pkg-name">Sessions Starting At</p>
+        <div class="pkg-price">$1,690</div>
+        <p class="pkg-lbl">session investment</p>
+      </div>
+
       <!-- LEFT: title, description, session inclusions -->
       <div class="pkg-col-left">
         <p class="pkg-name">The Senior Experience</p>
@@ -666,9 +776,9 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
         </ul>
       </div>
 
-      <!-- RIGHT: price, product options, CTA -->
+      <!-- RIGHT: price (desktop only), product options, CTA -->
       <div class="pkg-col-right">
-        <div>
+        <div class="pkg-right-hide-mobile">
           <p class="pkg-name">Sessions Starting At</p>
           <div class="pkg-price">$1,690</div>
           <div class="pkg-lbl">session investment</div>
