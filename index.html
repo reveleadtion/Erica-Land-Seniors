@@ -32,10 +32,11 @@ src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1"
 <script>
 (function() {
   var engagedFired = false;
+  var qualifiedFired = false;
   var pricingFired = false;
   var formFired = false;
   var pageStart = Date.now();
-  var MIN_TIME_MS = 30000; // must spend ≥30s on page
+  var MIN_TIME_MS = 30000;
 
   function getScrollPercent() {
     var doc = document.documentElement;
@@ -44,20 +45,6 @@ src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1"
     return scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
   }
 
-  // EngagedVisit — requires BOTH 75% scroll AND ≥30s on page
-  function checkEngaged() {
-    if (engagedFired) return;
-    if ((Date.now() - pageStart) >= MIN_TIME_MS && getScrollPercent() >= 75) {
-      engagedFired = true;
-      fbq('trackCustom', 'EngagedVisit', {
-        scroll_depth: '75',
-        time_on_page: Math.round((Date.now() - pageStart) / 1000),
-        page: window.location.href
-      });
-    }
-  }
-
-  // Pricing & form section visibility — high-intent signals
   function checkSections() {
     var vh = window.innerHeight * 0.75;
 
@@ -78,18 +65,48 @@ src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1"
     }
   }
 
+  // EngagedVisit — unchanged, high volume, feeds algorithm at current spend
+  function checkEngaged() {
+    if (engagedFired) return;
+    if (
+      (Date.now() - pageStart) >= MIN_TIME_MS &&
+      getScrollPercent() >= 75
+    ) {
+      engagedFired = true;
+      fbq('trackCustom', 'EngagedVisit', {
+        scroll_depth: '75',
+        time_on_page: Math.round((Date.now() - pageStart) / 1000),
+        page: window.location.href
+      });
+    }
+  }
+
+  // QualifiedLead — fires only when pricing + form both viewed
+  // This is your scaling event — switch optimization to this when ready to increase spend
+  function checkQualified() {
+    if (qualifiedFired) return;
+    if (pricingFired && formFired) {
+      qualifiedFired = true;
+      fbq('trackCustom', 'QualifiedLead', {
+        time_on_page: Math.round((Date.now() - pageStart) / 1000),
+        page: window.location.href
+      });
+    }
+  }
+
   window.addEventListener('scroll', function() {
-    checkEngaged();
     checkSections();
+    checkEngaged();
+    checkQualified();
   }, { passive: true });
 
-  // Re-check every 5s so the time gate can trigger after scroll is already past 75%
   var ticker = setInterval(function() {
     checkEngaged();
-    if (engagedFired) clearInterval(ticker);
+    checkQualified();
+    if (engagedFired && qualifiedFired) clearInterval(ticker);
   }, 5000);
 
-  // CTA click — bottom-funnel signal
+  // CTA click — bottom-funnel signal, always tracked independently
   document.addEventListener('click', function(e) {
     var el = e.target.closest('a[href="#booking"], a[href="#packages"]');
     if (el) {
