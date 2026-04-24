@@ -248,23 +248,20 @@ footer{background:var(--charcoal);padding:44px clamp(20px,5vw,48px);text-align:c
 .foot-logo{font-family:var(--serif);font-size:1.25rem;font-style:italic;font-weight:300;color:var(--cream);margin-bottom:5px}
 footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margin-top:5px}
 
-/* WHY PORTRAITS MATTER */
-.wpm{padding:clamp(64px,9vw,116px) 0;background:#fff}
-.wpm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,88px);align-items:center}
-.wpm-img-wrap{position:relative}
-.wpm-img-wrap img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block}
-.wpm-img-wrap::after{content:'';position:absolute;bottom:-16px;right:-16px;width:60%;height:50%;border:1px solid var(--blush);z-index:-1;pointer-events:none}
-.wpm-pull{font-family:var(--serif);font-size:clamp(1.4rem,2.8vw,2rem);font-weight:300;font-style:italic;color:var(--charcoal);line-height:1.4;margin-bottom:24px;border-left:2px solid var(--charcoal);padding-left:24px}
-.wpm-body{font-family:var(--sans);font-size:.92rem;font-weight:300;line-height:1.85;color:var(--gray);margin-bottom:16px}
+/* WHY PORTRAITS MATTER — Option C: warm stone, centered editorial */
+.wpm{padding:clamp(72px,10vw,128px) 0;background:#E8E3DE}
+.wpm-inner{text-align:center;max-width:860px;margin:0 auto}
+.wpm-big-quote{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.4rem);font-weight:300;font-style:italic;color:var(--charcoal);line-height:1.5;margin:0 auto clamp(28px,4vw,44px);max-width:720px}
+.wpm-body-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);text-align:left;margin:0 auto clamp(32px,4vw,44px);max-width:840px}
+.wpm-body{font-family:var(--sans);font-size:.92rem;font-weight:300;line-height:1.85;color:var(--gray)}
 
 /* TABLET ≤820px */
 @media(max-width:820px){
-  .about-grid,.trust-grid,.wpm-grid{grid-template-columns:1fr;gap:32px}
+  .about-grid,.trust-grid{grid-template-columns:1fr;gap:32px}
+  .wpm-body-cols{grid-template-columns:1fr}
   .me-grid{grid-template-columns:1fr;gap:32px}
   .me-img-wrap{max-width:440px;margin:0 auto;width:100%}
   .me-img-wrap::before{display:none}
-  .wpm-img-wrap{max-width:440px;margin:0 auto;width:100%}
-  .wpm-img-wrap::after{display:none}
   .trust-photo{max-width:440px;margin:0 auto;width:100%}
   .trust-photo::before{display:none}
   .steps{grid-template-columns:repeat(3,1fr);gap:16px}
@@ -280,9 +277,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
 /* MOBILE ≤600px */
 @media(max-width:600px){
   .about-grid{gap:24px}
-  .wpm-grid{gap:24px}
   .me-grid{gap:24px}
-  .wpm-img-wrap img{aspect-ratio:4/3}
   .about-imgs{grid-template-columns:1fr 1fr;gap:6px;grid-template-rows:auto}
   .aimg-tall{grid-row:auto;aspect-ratio:4/5}
   .aimg-sq{aspect-ratio:4/5}
@@ -338,7 +333,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   <div class="hero-body">
     <p class="hero-eye">Senior Portrait Photography · Rockville, MD</p>
     <h1 class="hero-h1">They're only a senior once.</h1>
-    <p class="hero-sub">Portraits they'll show their own kids someday</p>
+    <p class="hero-sub">Portraits they will show their children someday</p>
     <div class="hero-btns">
       <a href="#booking" class="btn btn-solid">Book Your Session</a>
       <a href="#packages" class="btn btn-outline-light">See Pricing</a>
@@ -476,24 +471,19 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
-<!-- WHY PORTRAITS MATTER -->
+<!-- WHY PORTRAITS MATTER — Option C: warm stone, centered editorial -->
 <section class="wpm">
   <div class="wrap">
-    <div class="wpm-grid">
-      <div class="wpm-img-wrap r">
-        <img src="https://static.showit.co/400/XzHtsGG-CfWlgjA9JHtz1A/320354/rockville_photographer_or_erica_land_127.jpg" srcset="https://static.showit.co/400/XzHtsGG-CfWlgjA9JHtz1A/320354/rockville_photographer_or_erica_land_127.jpg 400w, https://static.showit.co/800/XzHtsGG-CfWlgjA9JHtz1A/320354/rockville_photographer_or_erica_land_127.jpg 800w" sizes="(max-width:820px) 90vw, 45vw" alt="Why senior portraits matter" loading="lazy" decoding="async" width="600" height="750">
+    <div class="wpm-inner r">
+      <p class="eyebrow" style="text-align:center">Why Senior Portraits Matter</p>
+      <h2 class="h2" style="text-align:center;margin:0 auto clamp(16px,2vw,24px)">More than a photo —<br><em>a milestone preserved</em></h2>
+      <div class="rule" style="margin:clamp(18px,2.5vw,28px) auto"></div>
+      <p class="wpm-big-quote r r1">"Every senior deserves a session that captures not just how they look — but who they are right now. These are the portraits she'll show her own kids someday."</p>
+      <div class="wpm-body-cols r r2">
+        <p class="wpm-body">High school is filled with change and growth. Think about how much has shifted since freshman year — the friendships, the passions, the person she's become. She's closer than ever to who she was made to be, and this moment deserves to be preserved.</p>
+        <p class="wpm-body">These portraits aren't just for today. They're heirlooms your family will look back on for decades — a true reflection of her heart, soul, and personality, captured in archival artwork built to last a lifetime.</p>
       </div>
-      <div class="r r2">
-        <p class="eyebrow">Why Senior Portraits Matter</p>
-        <h2 class="h2">More than a photo —<br><em>a milestone preserved</em></h2>
-        <div class="rule"></div>
-        <p class="wpm-body">High school is filled with change and growth. Think about how much has shifted since freshman year. Your friendships. Your passions. The person you've become. You're closer than ever to who you were made to be.</p>
-        <div class="wpm-pull">"Every senior deserves a session that captures not just how they look, but who they are right now!"</div>
-        <p class="wpm-body">These portraits aren't just for today. They're heirlooms your family will look back on for decades. A true reflection of your heart, soul, and personality, preserved in archival artwork built to last.</p>
-        <p class="wpm-body">We provide a fully custom experience that feels personal, empowering, and unforgettable. And it all culminates with printed artwork that honors this once-in-a-lifetime milestone.</p>
-        <br>
-        <a href="#booking" class="btn btn-solid">Book Your Session</a>
-      </div>
+      <a href="#booking" class="btn btn-solid r r3">Book Your Session</a>
     </div>
   </div>
 </section>
