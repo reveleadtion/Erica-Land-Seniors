@@ -6,18 +6,13 @@
 <title>The Senior Experience | Erica Land Photography</title>
 <meta name="description" content="Award-winning senior portrait photography in Rockville, MD. Full-service sessions designed to celebrate who you are.">
 
-<!-- Preconnects: establish early connections for the critical-path origins -->
 <link rel="preconnect" href="https://static.showit.co" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Preload the LCP hero image with responsive srcset hint -->
 <link rel="preload" as="image" href="https://static.showit.co/1200/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg" fetchpriority="high" imagesrcset="https://static.showit.co/800/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg 800w, https://static.showit.co/1200/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg 1200w, https://static.showit.co/1600/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg 1600w" imagesizes="100vw">
-
-<!-- Preload the nav logo (Lighthouse flagged it as the actual LCP element) -->
 <link rel="preload" as="image" href="https://static.showit.co/200/ibAQ3QipFG3dX-FolSEJdw/320354/erica_land_photography_or_rockville_md_15.png" fetchpriority="high">
 
-<!-- Google Fonts: non-blocking async load -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap"></noscript>
 <style>
@@ -59,7 +54,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px clamp(18px,5vw,
 nav.s{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:13px clamp(18px,5vw,48px);box-shadow:0 1px 18px rgba(29,29,27,.06)}
 .nav-logo-img{height:38px;width:auto;filter:brightness(0) invert(1);transition:filter .35s}
 nav.s .nav-logo-img{filter:brightness(0)}
-
 .nav-btn{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border:1px solid rgba(255,255,255,.5);color:#fff;transition:all .25s;white-space:nowrap}
 nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .nav-btn:hover{background:var(--dusty);border-color:var(--dusty);color:#fff}
@@ -90,10 +84,9 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .badge-n{font-family:var(--serif);font-size:2.1rem;font-weight:300;font-style:italic;color:var(--dusty);line-height:1}
 .badge-l{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gray);margin-top:3px}
 
-/* TRUST BAR — scrolling marquee */
+/* TRUST BAR */
 .trust-bar{background:#fff;border-top:1px solid #edeae7;border-bottom:1px solid #edeae7;padding:clamp(22px,3.5vw,36px) 0;overflow:hidden}
 .trust-bar-track-wrap{overflow:hidden;position:relative}
-/* fade edges */
 .trust-bar-track-wrap::before,
 .trust-bar-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
 .trust-bar-track-wrap::before{left:0;background:linear-gradient(to right,#fff,transparent)}
@@ -105,6 +98,9 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .tb-badge img{height:clamp(56px,6vw,88px);width:auto;object-fit:contain;display:block}
 .trust-bar-label{text-align:center;margin-top:clamp(12px,1.5vw,18px);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#bbb;font-family:var(--sans)}
 
+/* TRUST BAR LOCAL LINE — CHANGE 7 */
+.trust-bar-local{text-align:center;margin-top:8px;font-size:.72rem;font-weight:300;color:var(--gray);font-family:var(--sans);letter-spacing:.02em}
+
 /* GALLERY */
 .gallery{padding:clamp(56px,7vw,88px) 0;background:var(--warm-white);overflow:hidden}
 .gallery-hd{text-align:center;margin-bottom:40px}
@@ -114,7 +110,7 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .gi:hover img{transform:scale(1.04)}
 .ge img,.gf img{object-position:center center}
 
-/* PROCESS 3 STEPS */
+/* PROCESS */
 .process{padding:clamp(64px,9vw,116px) 0;background:var(--charcoal)}
 .process .eyebrow{color:var(--rose)}
 .process .h2{color:var(--cream)}
@@ -128,6 +124,19 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .step-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;margin-bottom:16px;filter:brightness(.84) saturate(.78)}
 .step-title{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:var(--cream);margin-bottom:8px}
 .step-txt{font-size:.77rem;font-weight:300;line-height:1.75;color:rgba(255,255,255,.55)}
+
+/* ============================================
+   MEET ERICA — CHANGE 1
+   ============================================ */
+.meet-erica{padding:clamp(64px,9vw,116px) 0;background:#fff}
+.me-grid{display:grid;grid-template-columns:420px 1fr;gap:clamp(40px,7vw,88px);align-items:center;max-width:1100px;margin:0 auto}
+.me-img-wrap{position:relative;flex-shrink:0}
+.me-img-wrap img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block}
+.me-img-wrap::before{content:'';position:absolute;top:-14px;right:-14px;left:14px;bottom:14px;border:1px solid #E1DDDB;z-index:-1;pointer-events:none}
+.me-quote{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:300;font-style:italic;line-height:1.4;color:var(--charcoal);margin-bottom:28px;padding-left:24px;border-left:2px solid var(--charcoal)}
+.me-body{font-family:var(--sans);font-size:.92rem;font-weight:300;line-height:1.85;color:var(--gray);margin-bottom:16px}
+.me-sig{font-family:var(--serif);font-size:1.15rem;font-style:italic;font-weight:300;color:var(--charcoal);margin-top:24px}
+.me-sig span{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);font-style:normal;margin-top:4px}
 
 /* TRUST */
 .trust{padding:clamp(64px,9vw,108px) 0}
@@ -145,7 +154,7 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .tq p{font-family:var(--serif);font-size:1.1rem;font-style:italic;font-weight:300;color:var(--charcoal);line-height:1.6;margin-bottom:9px}
 .tq cite{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dusty);font-style:normal}
 
-/* REVIEWS CAROUSEL */
+/* REVIEWS */
 .reviews{padding:clamp(64px,9vw,100px) 0;background:var(--warm-white);overflow:hidden}
 .rev-hd{text-align:center;margin-bottom:clamp(32px,5vw,52px)}
 .rev-hd .body{max-width:480px;margin:0 auto;text-align:center}
@@ -170,18 +179,14 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--lgray);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
 .dot.a{background:var(--dusty);transform:scale(1.25)}
 
-/* ============================================
-   PACKAGE — desktop (unchanged two-column)
-   ============================================ */
+/* PACKAGES */
 #packages{padding:clamp(64px,9vw,116px) 0;background:var(--cream)}
 .pkg-hd{text-align:center;margin-bottom:clamp(36px,5vw,60px)}
 .pkg-hd .body{max-width:500px;margin:0 auto;text-align:center}
 .pkg-note{font-size:.74rem;color:var(--gray);font-style:italic;text-align:center;margin-top:9px;letter-spacing:.05em}
-
 .pkg-card{background:var(--charcoal);display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:960px;margin:0 auto}
 .pkg-col-left{padding:clamp(32px,5vw,52px) clamp(24px,4vw,44px);border-right:1px solid rgba(255,255,255,.08)}
 .pkg-col-right{padding:clamp(32px,5vw,52px) clamp(24px,4vw,44px);display:flex;flex-direction:column}
-
 .pkg-badge{display:inline-block;background:var(--dusty);color:#fff;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:6px 18px;margin-bottom:24px}
 .pkg-name{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:12px}
 .pkg-price{font-family:var(--serif);font-size:clamp(2.6rem,5vw,3.8rem);font-weight:300;font-style:italic;color:#fff;line-height:1}
@@ -192,29 +197,43 @@ nav.s .nav-btn{border-color:var(--charcoal);color:var(--charcoal)}
 .pkg-list li{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.78);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:9px}
 .pkg-list li::before{content:'–';color:rgba(255,255,255,.35);flex-shrink:0}
 .pkg-cta{display:block;text-align:center;width:100%}
-
-/* Product sub-list on right column */
 .pkg-sub-hd{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
 .pkg-sub-list{list-style:none;margin-bottom:0;flex:1}
 .pkg-sub-list li{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.62);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:flex-start;gap:9px;line-height:1.5}
 .pkg-sub-list li::before{content:'◦';color:rgba(255,255,255,.35);flex-shrink:0;margin-top:1px}
-
-/* Right col bottom area */
 .pkg-right-bottom{margin-top:auto;padding-top:28px}
 .pkg-right-price-block{margin-bottom:24px}
 .pkg-right-tagline{font-family:var(--serif);font-size:1.05rem;font-style:italic;font-weight:300;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:20px}
-
-/* Mobile-only price hero block (hidden on desktop) */
 .pkg-mobile-price{display:none}
 
-/* FORM */
+/* ============================================
+   FORM — CHANGES 2, 4, 5
+   ============================================ */
 #booking{padding:clamp(60px,8vw,96px) 0;background:var(--warm-white)}
 .form-hd{text-align:center;margin-bottom:32px}
 .form-hd .body{max-width:460px;margin:0 auto;text-align:center}
+
+/* CHANGE 4: Scarcity signal */
+.form-scarcity{text-align:center;margin-bottom:28px}
+.form-scarcity-pill{display:inline-block;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 20px}
+
+/* CHANGE 2: Direct contact strip */
+.form-direct{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,36px);background:#fff;border:1px solid #E1DDDB;padding:22px clamp(18px,4vw,36px);max-width:640px;margin:0 auto 32px;flex-wrap:wrap}
+.form-direct-label{font-family:var(--sans);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);white-space:nowrap}
+.form-direct-divider{width:1px;height:28px;background:#E1DDDB;flex-shrink:0}
+.form-direct-link{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:1.15rem;font-style:italic;font-weight:300;color:var(--charcoal);transition:color .2s}
+.form-direct-link:hover{color:var(--gray)}
+.form-direct-link svg{width:16px;height:16px;stroke:var(--charcoal);fill:none;stroke-width:1.5;flex-shrink:0;transition:stroke .2s}
+.form-direct-link:hover svg{stroke:var(--gray)}
+.form-direct-note{font-size:.68rem;color:var(--gray);font-weight:300}
+
 .form-box{max-width:640px;margin:0 auto;background:var(--cream);border:2px dashed var(--blush);padding:clamp(44px,7vw,68px) clamp(22px,5vw,44px);position:relative;text-align:center}
 .form-lbl{font-family:var(--sans);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dusty);background:var(--cream);padding:0 12px;position:absolute;top:-9px;left:50%;transform:translateX(-50%);white-space:nowrap}
 .form-box p{font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--gray)}
 .form-box span{font-size:.73rem;color:var(--gray);opacity:.6;display:block;margin-top:9px;line-height:1.65}
+
+/* CHANGE 5: Form loading placeholder */
+.form-loading{text-align:center;padding:40px 20px;font-family:var(--sans);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#bbb}
 
 /* FINAL CTA */
 .final{padding:clamp(72px,9vw,116px) 0;background:var(--dusty);text-align:center;position:relative;overflow:hidden}
@@ -241,6 +260,9 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
 /* TABLET ≤820px */
 @media(max-width:820px){
   .about-grid,.trust-grid,.wpm-grid{grid-template-columns:1fr;gap:32px}
+  .me-grid{grid-template-columns:1fr;gap:32px}
+  .me-img-wrap{max-width:440px;margin:0 auto;width:100%}
+  .me-img-wrap::before{display:none}
   .wpm-img-wrap{max-width:440px;margin:0 auto;width:100%}
   .wpm-img-wrap::after{display:none}
   .trust-photo{max-width:440px;margin:0 auto;width:100%}
@@ -249,18 +271,17 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   .step-img{aspect-ratio:4/5}
   .gal-grid{grid-template-columns:repeat(2,1fr);gap:4px;grid-auto-rows:220px}
   .gi{height:220px}
-  /* Stack package card on tablet */
   .pkg-card{grid-template-columns:1fr;max-width:540px}
   .pkg-col-left{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .form-direct-divider{display:none}
+  .form-direct{gap:12px}
 }
 
-/* ============================================
-   MOBILE ≤600px — PRICING REBUILT
-   Lead with the NUMBER, then name, desc, lists
-   ============================================ */
+/* MOBILE ≤600px */
 @media(max-width:600px){
   .about-grid{gap:24px}
   .wpm-grid{gap:24px}
+  .me-grid{gap:24px}
   .wpm-img-wrap img{aspect-ratio:4/3}
   .about-imgs{grid-template-columns:1fr 1fr;gap:6px;grid-template-rows:auto}
   .aimg-tall{grid-row:auto;aspect-ratio:4/5}
@@ -279,97 +300,26 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   .nav-btn{font-size:.6rem;padding:8px 13px}
   .hero-btns,.final-btns{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:260px;text-align:center}
+  .form-direct{flex-direction:column;text-align:center;gap:14px}
+  .form-direct-divider{display:none}
 
-  /* --- PRICING CARD MOBILE REBUILD --- */
-  .pkg-card{
-    grid-template-columns:1fr;
-    max-width:100%;
-    padding:0;
-    margin:0 auto;
-  }
-
-  /* SHOW mobile price hero, HIDE desktop right-col price block */
-  .pkg-mobile-price{
-    display:block;
-    text-align:center;
-    padding:44px 28px 36px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-  }
-  .pkg-mobile-price .pkg-name{
-    margin-bottom:18px;
-    font-size:.6rem;
-    color:rgba(255,255,255,.5);
-  }
-  .pkg-mobile-price .pkg-price{
-    font-size:3.6rem;
-    margin-bottom:10px;
-    line-height:1;
-  }
-  .pkg-mobile-price .pkg-lbl{
-    font-size:.62rem;
-    letter-spacing:.16em;
-    color:rgba(255,255,255,.5);
-    margin:0;
-    text-transform:uppercase;
-  }
-
-  /* LEFT column: remove top price-area padding, tighten spacing */
-  .pkg-col-left{
-    padding:36px 28px 32px;
-    border-right:none;
-    border-bottom:1px solid rgba(255,255,255,.08);
-  }
-  .pkg-col-left .pkg-name{
-    text-align:center;
-    margin-bottom:14px;
-  }
-  .pkg-col-left .h2{
-    text-align:center;
-    font-size:1.55rem !important;
-    margin-bottom:20px !important;
-    line-height:1.25;
-  }
-  .pkg-col-left .pkg-rule{
-    margin:0 auto 20px;
-  }
-  .pkg-col-left .pkg-desc{
-    text-align:center;
-    margin-bottom:24px;
-    font-size:.88rem;
-  }
-  .pkg-list li{
-    padding:9px 0;
-    font-size:.82rem;
-  }
-
-  /* RIGHT column: hide the desktop price block, keep product list + CTA */
-  .pkg-col-right{
-    padding:36px 28px 40px;
-  }
-  .pkg-right-hide-mobile{display:none !important;}
-
-  .pkg-col-right .pkg-sub-hd{
-    text-align:center;
-    margin-bottom:16px;
-    padding-bottom:14px;
-    font-size:.6rem;
-  }
-  .pkg-sub-list li{
-    padding:9px 0;
-    font-size:.82rem;
-  }
-
-  .pkg-right-bottom{
-    padding-top:28px;
-    margin-top:24px;
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-  .pkg-right-tagline{
-    text-align:center;
-    font-size:1.02rem;
-    margin-bottom:24px;
-    padding:0 4px;
-  }
+  .pkg-card{grid-template-columns:1fr;max-width:100%;padding:0;margin:0 auto}
+  .pkg-mobile-price{display:block;text-align:center;padding:44px 28px 36px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .pkg-mobile-price .pkg-name{margin-bottom:18px;font-size:.6rem;color:rgba(255,255,255,.5)}
+  .pkg-mobile-price .pkg-price{font-size:3.6rem;margin-bottom:10px;line-height:1}
+  .pkg-mobile-price .pkg-lbl{font-size:.62rem;letter-spacing:.16em;color:rgba(255,255,255,.5);margin:0;text-transform:uppercase}
+  .pkg-col-left{padding:36px 28px 32px;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .pkg-col-left .pkg-name{text-align:center;margin-bottom:14px}
+  .pkg-col-left .h2{text-align:center;font-size:1.55rem !important;margin-bottom:20px !important;line-height:1.25}
+  .pkg-col-left .pkg-rule{margin:0 auto 20px}
+  .pkg-col-left .pkg-desc{text-align:center;margin-bottom:24px;font-size:.88rem}
+  .pkg-list li{padding:9px 0;font-size:.82rem}
+  .pkg-col-right{padding:36px 28px 40px}
+  .pkg-right-hide-mobile{display:none !important}
+  .pkg-col-right .pkg-sub-hd{text-align:center;margin-bottom:16px;padding-bottom:14px;font-size:.6rem}
+  .pkg-sub-list li{padding:9px 0;font-size:.82rem}
+  .pkg-right-bottom{padding-top:28px;margin-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+  .pkg-right-tagline{text-align:center;font-size:1.02rem;margin-bottom:24px;padding:0 4px}
 }
 </style>
 </head>
@@ -381,14 +331,14 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   <a href="#booking" class="nav-btn">Book Your Session</a>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — CHANGE 3: Parent-directed headline variant -->
 <section class="hero">
   <img class="hero-bg" src="https://static.showit.co/1200/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg" srcset="https://static.showit.co/800/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg 800w, https://static.showit.co/1200/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg 1200w, https://static.showit.co/1600/08bcipv7oPW8266c2l8YrQ/320354/rockville_photographer_or_erica_land_140.jpg 1600w" sizes="100vw" alt="" width="1200" height="800" fetchpriority="high" decoding="async">
   <div class="hero-ov"></div>
   <div class="hero-body">
     <p class="hero-eye">Senior Portrait Photography · Rockville, MD</p>
-    <h1 class="hero-h1">Confident. Beautiful.<br>100% You.</h1>
-    <p class="hero-sub">Celebrate your once-in-a-lifetime senior year</p>
+    <h1 class="hero-h1">They're only a senior once.</h1>
+    <p class="hero-sub">Portraits they'll show their own kids someday</p>
     <div class="hero-btns">
       <a href="#booking" class="btn btn-solid">Book Your Session</a>
       <a href="#packages" class="btn btn-outline-light">See Pricing</a>
@@ -427,11 +377,10 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
-<!-- TRUST BAR -->
+<!-- TRUST BAR — CHANGE 7: localized label -->
 <div class="trust-bar">
   <div class="trust-bar-track-wrap">
     <div class="trust-bar-track">
-      <!-- Set 1 -->
       <div class="tb-badge"><img src="https://static.showit.co/200/3UYiGrqEQCJ_gdij9FZJRg/320354/golden_badge.png" alt="Readers Choice 2025 Winner – Potomac Lifestyle" loading="lazy" decoding="async" width="98" height="98"></div>
       <div class="tb-badge"><img src="https://static.showit.co/200/Fy3i4xedsGWWSshG8Tgexg/320354/best_of_2026_black.png" alt="Best of Potomac 2026" loading="lazy" decoding="async" width="98" height="98"></div>
       <div class="tb-badge"><img src="https://static.showit.co/200/GBb3BqG7jhSdIp9fNkY1Mg/320354/best_of_bethesda_icon_winner_2026_copy.png" alt="Best of Bethesda Winner 2026" loading="lazy" decoding="async" width="81" height="98"></div>
@@ -439,7 +388,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
       <div class="tb-badge"><img src="https://static.showit.co/400/xPiLl2MLkZ6q0a0XTvz6PA/320354/erica_land_photography_featured_04.png" alt="Senior Inspire Top 100" loading="lazy" decoding="async" width="243" height="98"></div>
       <div class="tb-badge"><img src="https://static.showit.co/400/KWD3QC6pZskXVtcEXhR6lg/320354/erica_land_photography_featured.png" alt="Modern Teen Style – 25 Most Influential" loading="lazy" decoding="async" width="386" height="98"></div>
       <div class="tb-badge"><img src="https://static.showit.co/400/fK7chxHcEjGfqg0DvQ2UIw/320354/erica_land_photography_featured_03.png" alt="Senior Muse Featured" loading="lazy" decoding="async" width="431" height="98"></div>
-      <!-- Set 2 — duplicate for seamless infinite loop -->
+      <!-- Duplicate set for seamless loop -->
       <div class="tb-badge"><img src="https://static.showit.co/200/3UYiGrqEQCJ_gdij9FZJRg/320354/golden_badge.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="98" height="98"></div>
       <div class="tb-badge"><img src="https://static.showit.co/200/Fy3i4xedsGWWSshG8Tgexg/320354/best_of_2026_black.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="98" height="98"></div>
       <div class="tb-badge"><img src="https://static.showit.co/200/GBb3BqG7jhSdIp9fNkY1Mg/320354/best_of_bethesda_icon_winner_2026_copy.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="81" height="98"></div>
@@ -450,6 +399,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
     </div>
   </div>
   <p class="trust-bar-label">Award Winning Senior Portrait Studio In the DMV Area</p>
+  <p class="trust-bar-local">Voted Best of Bethesda &amp; Best of Potomac 2026 — your neighbors' choice for senior portraits in Rockville, MD</p>
 </div>
 
 <!-- GALLERY -->
@@ -470,12 +420,12 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
-<!-- PROCESS — 3 STEPS -->
+<!-- PROCESS -->
 <section class="process">
   <div class="wrap">
     <div class="proc-hd r">
       <p class="eyebrow">How It Works</p>
-     <h2 class="h2" style="color: white;">A guided experience<br><em style="color: white;">from start to finish</em></h2>
+      <h2 class="h2" style="color:white;">A guided experience<br><em style="color:white;">from start to finish</em></h2>
       <div class="rule"></div>
       <p class="body">Every step is personal, stress-free, and designed entirely around you.</p>
     </div>
@@ -505,6 +455,27 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
+<!-- MEET ERICA — CHANGE 1 -->
+<section class="meet-erica">
+  <div class="wrap">
+    <div class="me-grid">
+      <div class="me-img-wrap r">
+        <img src="https://static.showit.co/400/DiPwhes7NbNu_waihlzfig/320354/erica_land_-_photographer_rockville_md027.jpg" srcset="https://static.showit.co/400/DiPwhes7NbNu_waihlzfig/320354/erica_land_-_photographer_rockville_md027.jpg 400w, https://static.showit.co/800/DiPwhes7NbNu_waihlzfig/320354/erica_land_-_photographer_rockville_md027.jpg 800w" sizes="(max-width:820px) 90vw, 420px" alt="Erica Land, portrait photographer in Rockville MD" loading="lazy" decoding="async" width="400" height="500">
+      </div>
+      <div class="r r2">
+        <p class="eyebrow">Meet Erica</p>
+        <h2 class="h2">The person behind<br><em>every session</em></h2>
+        <div class="rule"></div>
+        <div class="me-quote">"Before I was a photographer, I practiced law for 13 years. I know what it means to spend years doing something that looks right on paper — and I know what it feels like when something finally clicks."</div>
+        <p class="me-body">That shift changed everything for me. Now I spend my days helping seniors and their families preserve this once-in-a-lifetime moment — not with a flash drive of unedited files, but with heirloom artwork they'll pull out decades from now.</p>
+        <p class="me-body">Every senior who walks through my door gets my full attention, from the first consultation to the moment their portraits arrive. I am a full-service studio. I handle every detail so you can just show up and be celebrated.</p>
+        <p class="me-body">I've been recognized nationally and internationally for my work — but what I care about most is what your family says when they see the final portraits for the first time.</p>
+        <p class="me-sig">Erica Land<span>Photographer · Rockville, MD</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHY PORTRAITS MATTER -->
 <section class="wpm">
   <div class="wrap">
@@ -519,7 +490,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
         <p class="wpm-body">High school is filled with change and growth. Think about how much has shifted since freshman year. Your friendships. Your passions. The person you've become. You're closer than ever to who you were made to be.</p>
         <div class="wpm-pull">"Every senior deserves a session that captures not just how they look, but who they are right now!"</div>
         <p class="wpm-body">These portraits aren't just for today. They're heirlooms your family will look back on for decades. A true reflection of your heart, soul, and personality, preserved in archival artwork built to last.</p>
-        <p class="wpm-body">We provide a fully custom experience that feels personal, empowering, and unforgettable. And it all culminated with printed artwork that honors this once-in-a-lifetime milestone.</p>
+        <p class="wpm-body">We provide a fully custom experience that feels personal, empowering, and unforgettable. And it all culminates with printed artwork that honors this once-in-a-lifetime milestone.</p>
         <br>
         <a href="#booking" class="btn btn-solid">Book Your Session</a>
       </div>
@@ -553,7 +524,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
           </div>
         </div>
         <div class="tq">
-          <p>"Erica has not only made me feel more confident, but has also really increased my self-esteem. My senior session was such a personal, memorable experience!"</p>
+          <p>"My senior session was such a personal, memorable experience! I took my photos in Georgetown in Washington D.C. and it was such a fun time. I love the city and theatre and I wanted to incorporate the Kennedy Center — which Georgetown fit perfectly."</p>
           <cite>— Ellie R., past senior client</cite>
         </div>
         <br>
@@ -566,7 +537,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
-<!-- REVIEWS CAROUSEL -->
+<!-- REVIEWS CAROUSEL — CHANGE 6: Ellie R. moved to first position -->
 <section class="reviews">
   <div class="wrap">
     <div class="rev-hd r">
@@ -578,10 +549,33 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
     <div class="car-wrap r">
       <div class="car-track" id="track">
 
+        <!-- CHANGE 6: Ellie R. first — most specific, most senior-focused -->
         <div class="rc">
           <span class="rc-qm" aria-hidden="true">"</span>
           <div class="rc-top">
-            <div class="rc-av">N</div>
+            <div class="rc-av">E</div>
+            <div><div class="rc-name">Ellie R.</div><div class="rc-src">Google Review</div></div>
+            <svg class="gg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p class="rc-txt">Erica has not only made me feel more confident, but has also really increased my self-esteem. My senior session was such a personal, memorable experience! I took my photos in Georgetown and I love how she incorporated the Kennedy Center — my photos are everything I imagined and more.</p>
+        </div>
+
+        <div class="rc">
+          <span class="rc-qm" aria-hidden="true">"</span>
+          <div class="rc-top">
+            <div class="rc-av">H</div>
+            <div><div class="rc-name">Heather L.</div><div class="rc-src">Google Review</div></div>
+            <svg class="gg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p class="rc-txt">Working with Erica has been a dream come true for my daughter. Erica appreciates the individuality of each person and works towards increasing her strengths while gently encouraging them out of their comfort zone. The final products are stunning and the friendships made have been awesome!</p>
+        </div>
+
+        <div class="rc">
+          <span class="rc-qm" aria-hidden="true">"</span>
+          <div class="rc-top">
+            <div class="rc-av">S</div>
             <div><div class="rc-name">Stacey G.</div><div class="rc-src">Google Review</div></div>
             <svg class="gg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
           </div>
@@ -592,34 +586,12 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
         <div class="rc">
           <span class="rc-qm" aria-hidden="true">"</span>
           <div class="rc-top">
-            <div class="rc-av">M</div>
-            <div><div class="rc-name">Heather L.</div><div class="rc-src">Google Review</div></div>
-            <svg class="gg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          </div>
-          <div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="rc-txt">Working with Erica has been a dream come true for my daughter. Erica appreciates the individuality of each person and works towards increasing her strengths while gently encouraging them out if their comfort zone. The final products are stunning and the friendships made have been awesome!</p>
-        </div>
-
-        <div class="rc">
-          <span class="rc-qm" aria-hidden="true">"</span>
-          <div class="rc-top">
-            <div class="rc-av">S</div>
-            <div><div class="rc-name">Ellie R.</div><div class="rc-src">Google Review</div></div>
-            <svg class="gg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          </div>
-          <div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="rc-txt">My senior session was such a personal, memorable experience! I took my photos down in Georgetown in Washington D.C. and it was such a fun time. I love the city and theatre and I wanted to incorporate the Kennedy center in some of my photos along with a city look, which Georgetown fit perfectly.</p>
-        </div>
-
-        <div class="rc">
-          <span class="rc-qm" aria-hidden="true">"</span>
-          <div class="rc-top">
-            <div class="rc-av">J</div>
+            <div class="rc-av">L</div>
             <div><div class="rc-name">Lynne E.</div><div class="rc-src">Google Review</div></div>
             <svg class="gg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
           </div>
           <div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="rc-txt">Erica is creative, efficient, lovely to work with an all around an incredibly talented photographer - helping people feel at ease and bring out their best!</p>
+          <p class="rc-txt">Erica is creative, efficient, lovely to work with and all around an incredibly talented photographer — helping people feel at ease and bring out their best!</p>
         </div>
 
         <div class="rc">
@@ -643,11 +615,7 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
   </div>
 </section>
 
-<!-- ============================================
-     PACKAGE SECTION
-     Desktop: two-column unchanged
-     Mobile: price hero leads → package details → product options → CTA
-     ============================================ -->
+<!-- PACKAGES -->
 <section id="packages">
   <div class="wrap">
     <div class="pkg-hd r">
@@ -657,17 +625,12 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
       <p class="body">Every session includes a personalized consultation, professional makeup, expert posing, and Erica's full guidance from start to finish.</p>
       <p class="pkg-note">Sessions are fully custom — this is a starting point. Contact Erica for your personal quote.</p>
     </div>
-
     <div class="pkg-card r">
-
-      <!-- MOBILE-ONLY price hero — leads with the number -->
       <div class="pkg-mobile-price">
         <p class="pkg-name">Sessions Starting At</p>
         <div class="pkg-price">$1,690</div>
         <p class="pkg-lbl">session investment</p>
       </div>
-
-      <!-- LEFT: title, description, session inclusions -->
       <div class="pkg-col-left">
         <p class="pkg-name">The Senior Experience</p>
         <h3 class="h2" style="color:#fff;font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:16px">A full-service portrait experience crafted entirely around <em style="color:rgba(255,255,255,.45)">you.</em></h3>
@@ -685,8 +648,6 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
           <li>Heirloom artwork — delivered to your door</li>
         </ul>
       </div>
-
-      <!-- RIGHT: price (desktop only), product options, CTA -->
       <div class="pkg-col-right">
         <div class="pkg-right-hide-mobile">
           <p class="pkg-name">Sessions Starting At</p>
@@ -694,7 +655,6 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
           <div class="pkg-lbl">session investment</div>
           <div class="pkg-rule"></div>
         </div>
-
         <p class="pkg-sub-hd">Product options include</p>
         <ul class="pkg-sub-list">
           <li>Custom-designed, archival-quality albums</li>
@@ -702,18 +662,16 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
           <li>Keepsake boxes &amp; specialty items</li>
           <li>Digital images paired with printed products</li>
         </ul>
-
         <div class="pkg-right-bottom">
           <p class="pkg-right-tagline">"Sessions are fully custom — reach out and Erica will put together your personal quote."</p>
           <a href="#booking" class="btn btn-solid" style="background:#fff;color:var(--deep);display:block;text-align:center;width:100%">Book Your Session</a>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- FORM -->
+<!-- FORM — CHANGES 2, 4, 5 -->
 <section id="booking">
   <div class="wrap">
     <div class="form-hd r">
@@ -722,8 +680,29 @@ footer p{font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.42);margi
       <div class="rule" style="margin:20px auto"></div>
       <p class="body">Tell Erica a little about your senior and she'll be in touch within 24 hours to get you scheduled.</p>
     </div>
+
+    <!-- CHANGE 4: Scarcity pill -->
+    <div class="form-scarcity r">
+      <span class="form-scarcity-pill">Class of 2027 spots are filling — don't wait</span>
+    </div>
+
+    <!-- CHANGE 2: Direct contact strip -->
+    <div class="form-direct r">
+      <span class="form-direct-label">Prefer to reach out directly?</span>
+      <div class="form-direct-divider"></div>
+      <a href="tel:+13015202470" class="form-direct-link">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.88 9.86 19.79 19.79 0 01.81 1.23 2 2 0 012.8 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.91-.91a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Call or text Erica: (301) 520-2470
+      </a>
+      <div class="form-direct-divider"></div>
+      <span class="form-direct-note">Erica responds personally — no call center, no assistant</span>
+    </div>
+
+    <!-- CHANGE 5: Form with loading placeholder -->
     <div class="form-box r">
-      <iframe id="lc_contact_form" name="lc_contact_form" title="Booking inquiry form" frameborder="0" width="100%" height="600" loading="lazy" data-src="https://ericalandphotography.17hats.com/p#/embed/wnpgbdtkznhxvnvhtwwzszksvtzkstxr"></iframe>
+      <span class="form-lbl">Inquiry Form</span>
+      <div id="form-loading" class="form-loading">Loading inquiry form&hellip;</div>
+      <iframe id="lc_contact_form" name="lc_contact_form" title="Booking inquiry form" frameborder="0" width="100%" height="600" loading="lazy" data-src="https://ericalandphotography.17hats.com/p#/embed/wnpgbdtkznhxvnvhtwwzszksvtzkstxr" style="display:none"></iframe>
     </div>
   </div>
 </section>
@@ -765,18 +744,14 @@ document.querySelectorAll('.r').forEach(el=>io.observe(el));
   const cards=[...track.querySelectorAll('.rc')];
   const N=cards.length;
   let cur=0,timer;
-
   const pv=()=>window.innerWidth<580?1:2;
   const gap=20;
-
   function cardW(){
     const w=track.parentElement.offsetWidth;
     const p=pv();
     return(w-gap*(p-1))/p+gap;
   }
-
   function maxCur(){return Math.max(0,N-pv())}
-
   function buildDots(){
     dotsEl.innerHTML='';
     const pages=Math.ceil(N/pv());
@@ -788,98 +763,88 @@ document.querySelectorAll('.r').forEach(el=>io.observe(el));
       dotsEl.appendChild(d);
     }
   }
-
   function updateDots(){
     const ds=dotsEl.querySelectorAll('.dot');
     const ai=Math.round(cur/pv());
     ds.forEach((d,i)=>d.classList.toggle('a',i===ai));
   }
-
   function goTo(i){
     cur=Math.max(0,Math.min(i,maxCur()));
     track.style.transform=`translateX(-${cur*cardW()}px)`;
     updateDots();
   }
-
   function next(){goTo(cur+1>maxCur()?0:cur+1)}
   function prev(){goTo(cur-1<0?maxCur():cur-1)}
-
   function resetTimer(){clearInterval(timer);timer=setInterval(next,4600)}
-
   document.getElementById('next').onclick=()=>{next();resetTimer()};
   document.getElementById('prev').onclick=()=>{prev();resetTimer()};
-
-  // Touch swipe
   let tx=0;
   track.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
   track.addEventListener('touchend',e=>{
     const d=tx-e.changedTouches[0].clientX;
     if(Math.abs(d)>40){d>0?next():prev();resetTimer()}
   },{passive:true});
-
-  // Resize
   let rt;
   window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{buildDots();goTo(0)},150)},{passive:true});
-
   buildDots();
   resetTimer();
 })();
 
-// ============================================
-// Lazy-load the 17hats booking iframe
-// Loads when user scrolls within 600px of it, OR after 4s idle as a fallback.
-// This defers ~600 KiB of JS/CSS off the critical path.
-// ============================================
+// CHANGE 5: Lazy-load 17hats iframe with loading placeholder
 (function(){
-  var frame = document.getElementById('lc_contact_form');
+  var frame=document.getElementById('lc_contact_form');
+  var loader=document.getElementById('form-loading');
   if(!frame) return;
-  var loaded = false;
+  var loaded=false;
   function load(){
     if(loaded) return;
-    loaded = true;
-    frame.src = frame.dataset.src;
-    // Attach the iframe-sizer script only after the iframe starts loading
-    var s = document.createElement('script');
-    s.src = 'https://ericalandphotography.17hats.com/vendor/iframeSizer.min.js';
-    s.async = true;
+    loaded=true;
+    frame.src=frame.dataset.src;
+    // Show iframe, hide loader once iframe signals it loaded
+    frame.addEventListener('load',function(){
+      frame.style.display='block';
+      if(loader) loader.style.display='none';
+    },{once:true});
+    // Fallback: show iframe after 3s regardless
+    setTimeout(function(){
+      frame.style.display='block';
+      if(loader) loader.style.display='none';
+    },3000);
+    var s=document.createElement('script');
+    s.src='https://ericalandphotography.17hats.com/vendor/iframeSizer.min.js';
+    s.async=true;
     document.body.appendChild(s);
   }
   if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(entries){
+    var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ load(); obs.disconnect(); }
+        if(e.isIntersecting){load();obs.disconnect();}
       });
     },{rootMargin:'600px 0px'});
     obs.observe(frame);
   } else {
     load();
   }
-  // Fallback: if the user never scrolls, still load it after the page is idle
-  // so the form is ready if they tab away and come back.
-  (window.requestIdleCallback || function(cb){ setTimeout(cb, 4000); })(function(){
-    setTimeout(load, 4000);
+  (window.requestIdleCallback||function(cb){setTimeout(cb,4000);})(function(){
+    setTimeout(load,4000);
   });
 })();
 
-// ============================================
 // Deferred analytics & tracking
-// Moved out of <head> so they don't block FCP/LCP.
-// Load after the page is interactive (idle callback or 2s timeout).
-// ============================================
 (function(){
-  var fired = false;
+  var fired=false;
   function loadTracking(){
     if(fired) return;
-    fired = true;
+    fired=true;
 
-    // --- Microsoft Clarity ---
+    // Microsoft Clarity
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wcntmthifk");
+    })(window,document,"clarity","script","wcntmthifk");
 
-    // --- Meta Pixel ---
+    // Meta Pixel
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -887,100 +852,106 @@ document.querySelectorAll('.r').forEach(el=>io.observe(el));
       n.queue=[];t=b.createElement(e);t.async=!0;
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '736062361464846');
-    fbq('track', 'PageView');
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','736062361464846');
+    fbq('track','PageView');
 
-    // --- Engagement Tracking — Qualified Lead Signals ---
-    var engagedFired=false, qualifiedFired=false, pricingFired=false, formFired=false;
-    var pageStart = Date.now();
-    var MIN_TIME_MS = 30000;
+    // Engagement Tracking
+    var engagedFired=false,qualifiedFired=false,pricingFired=false,formFired=false;
+    var pageStart=Date.now();
+    var MIN_TIME_MS=30000;
 
     function getScrollPercent(){
-      var doc = document.documentElement;
-      var scrollTop = window.scrollY || doc.scrollTop;
-      var scrollHeight = doc.scrollHeight - doc.clientHeight;
-      return scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      var doc=document.documentElement;
+      var scrollTop=window.scrollY||doc.scrollTop;
+      var scrollHeight=doc.scrollHeight-doc.clientHeight;
+      return scrollHeight>0?(scrollTop/scrollHeight)*100:0;
     }
     function checkSections(){
-      var vh = window.innerHeight * 0.75;
+      var vh=window.innerHeight*0.75;
       if(!pricingFired){
-        var pkg = document.getElementById('packages');
-        if(pkg && pkg.getBoundingClientRect().top < vh){
-          pricingFired = true;
-          fbq('trackCustom', 'ViewedPricing', { page: window.location.href });
+        var pkg=document.getElementById('packages');
+        if(pkg&&pkg.getBoundingClientRect().top<vh){
+          pricingFired=true;
+          fbq('trackCustom','ViewedPricing',{page:window.location.href});
         }
       }
       if(!formFired){
-        var booking = document.getElementById('booking');
-        if(booking && booking.getBoundingClientRect().top < vh){
-          formFired = true;
-          fbq('trackCustom', 'ViewedBookingForm', { page: window.location.href });
+        var booking=document.getElementById('booking');
+        if(booking&&booking.getBoundingClientRect().top<vh){
+          formFired=true;
+          fbq('trackCustom','ViewedBookingForm',{page:window.location.href});
         }
       }
     }
     function checkEngaged(){
       if(engagedFired) return;
-      if((Date.now() - pageStart) >= MIN_TIME_MS && getScrollPercent() >= 75){
-        engagedFired = true;
-        fbq('trackCustom', 'EngagedVisit', {
-          scroll_depth: '75',
-          time_on_page: Math.round((Date.now() - pageStart) / 1000),
-          page: window.location.href
+      if((Date.now()-pageStart)>=MIN_TIME_MS&&getScrollPercent()>=75){
+        engagedFired=true;
+        fbq('trackCustom','EngagedVisit',{
+          scroll_depth:'75',
+          time_on_page:Math.round((Date.now()-pageStart)/1000),
+          page:window.location.href
         });
       }
     }
     function checkQualified(){
       if(qualifiedFired) return;
-      if(pricingFired && formFired){
-        qualifiedFired = true;
-        fbq('trackCustom', 'QualifiedLead', {
-          time_on_page: Math.round((Date.now() - pageStart) / 1000),
-          page: window.location.href
+      if(pricingFired&&formFired){
+        qualifiedFired=true;
+        fbq('trackCustom','QualifiedLead',{
+          time_on_page:Math.round((Date.now()-pageStart)/1000),
+          page:window.location.href
         });
       }
     }
 
-    // Run once on load in case user already scrolled past sections before tracking loaded
+    // Fire once on load in case user scrolled before tracking loaded
     checkSections();
 
-    window.addEventListener('scroll', function(){
+    window.addEventListener('scroll',function(){
       checkSections();
       checkEngaged();
       checkQualified();
-    }, { passive: true });
+    },{passive:true});
 
-    var ticker = setInterval(function(){
+    var ticker=setInterval(function(){
       checkEngaged();
       checkQualified();
-      if(engagedFired && qualifiedFired) clearInterval(ticker);
-    }, 5000);
+      if(engagedFired&&qualifiedFired) clearInterval(ticker);
+    },5000);
 
-    document.addEventListener('click', function(e){
-      var el = e.target.closest('a[href="#booking"], a[href="#packages"]');
+    // CTA clicks — track phone number clicks too
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('a[href="#booking"], a[href="#packages"]');
       if(el){
-        fbq('trackCustom', 'ClickedCTA', {
-          cta_text: el.textContent.trim().slice(0, 50),
-          page: window.location.href
+        fbq('trackCustom','ClickedCTA',{
+          cta_text:el.textContent.trim().slice(0,50),
+          page:window.location.href
+        });
+      }
+      // Track direct phone/text tap — CHANGE 2
+      var tel=e.target.closest('a[href^="tel:"]');
+      if(tel){
+        fbq('trackCustom','DirectContact',{
+          method:'phone',
+          page:window.location.href
         });
       }
     });
   }
 
-  // Load after the page is idle; 2s hard fallback for browsers without requestIdleCallback
   if('requestIdleCallback' in window){
-    requestIdleCallback(loadTracking, { timeout: 2500 });
+    requestIdleCallback(loadTracking,{timeout:2500});
   } else {
-    setTimeout(loadTracking, 2000);
+    setTimeout(loadTracking,2000);
   }
-  // Also load on first user interaction (fallback for tabs that never go idle)
   ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){
-    window.addEventListener(ev, loadTracking, { once: true, passive: true });
+    window.addEventListener(ev,loadTracking,{once:true,passive:true});
   });
 })();
 </script>
 
-<!-- NoScript fallback for Meta Pixel — critical for users without JS -->
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1" alt=""></noscript>
 
 </body>
