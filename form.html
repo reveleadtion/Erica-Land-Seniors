@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  ================================================================
+  ERICA LAND PHOTOGRAPHY — DEDICATED FORM PAGE (form.html)
+  ================================================================
+  PURPOSE:
+    Stripped, fast-loading page with 17hats form embedded directly
+    (no lazy loading). Hosts the Meta Pixel with clean event firing:
+
+    PageView     — fires on load (standard, always fires)
+    ViewContent  — fires on load with form context (tells Meta this
+                   person specifically navigated to the form page)
+    Lead         — fires when URL contains ?success=1
+    DirectContact — fires on tel: click
+
+  HOW TO GET THE LEAD EVENT TO FIRE:
+    In 17hats > Settings > Contact Form > Redirect after submission,
+    set the redirect URL to:
+      https://seniors.ericalandphotography.com/form.html?success=1
+    (or wherever this file lives on your domain)
+
+    When 17hats redirects the user after a successful submission,
+    this page reloads with ?success=1, the Pixel fires Lead, and
+    the thank-you message is displayed instead of the form.
+
+  QUALIFIED LEAD on main LP:
+    Fires when user clicks any "Get Your Personal Quote" CTA or
+    taps the phone number. This page arrival itself is a strong
+    downstream signal — consider also creating a new custom
+    conversion in Meta Events Manager keyed to ViewContent on
+    this URL to use as an alternate optimization event later.
+  ================================================================
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your Personal Quote | Erica Land Photography</title>
+<meta name="description" content="Tell Erica about your senior and receive your personalized session quote within 24 hours.">
+<meta name="robots" content="noindex"><!-- Keep this page out of search; it's a funnel page -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Jost',sans-serif;
+  background:#F2EDE9;
+  color:#1D1D1B;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── HEADER ── */
+.header{
+  background:#fff;
+  border-bottom:1px solid #E1DDDB;
+  padding:18px clamp(20px,5vw,48px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.header-logo img{height:34px;width:auto;display:block}
+.header-trust{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.header-stars{display:flex;gap:2px}
+.header-star{width:11px;height:11px;fill:#f5b400}
+.header-trust-txt{font-size:.68rem;font-weight:300;color:#5a5a58;white-space:nowrap}
+.header-trust-txt strong{font-weight:500;color:#1D1D1B}
+
+/* ── MAIN LAYOUT ── */
+.page{max-width:680px;margin:0 auto;padding:clamp(32px,6vw,64px) clamp(20px,5vw,40px)}
+
+/* ── EYEBROW / HEADING ── */
+.eyebrow{font-family:'Jost',sans-serif;font-size:.6rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:#5a5a58;margin-bottom:12px}
+.heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;line-height:1.1;color:#1D1D1B;margin-bottom:10px}
+.heading em{font-style:italic;color:#5a5a58}
+.subhead{font-size:.88rem;font-weight:300;line-height:1.75;color:#5a5a58;margin-bottom:28px;max-width:520px}
+
+/* ── DIRECT CONTACT BAR ── */
+.contact-bar{
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,3vw,28px);
+  background:#fff;
+  border:1px solid #E1DDDB;
+  border-radius:0;
+  padding:16px clamp(16px,3vw,28px);
+  margin-bottom:28px;
+  flex-wrap:wrap;
+}
+.contact-bar-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#5a5a58;white-space:nowrap;flex-shrink:0}
+.contact-bar-divider{width:1px;height:22px;background:#E1DDDB;flex-shrink:0}
+.contact-bar-link{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1.05rem;font-style:italic;font-weight:300;
+  color:#1D1D1B;text-decoration:none;transition:color .2s;
+  white-space:nowrap;
+}
+.contact-bar-link:hover{color:#5a5a58}
+.contact-bar-link svg{width:14px;height:14px;stroke:#1D1D1B;fill:none;stroke-width:1.5;flex-shrink:0}
+.contact-bar-note{font-size:.65rem;color:#5a5a58;font-weight:300}
+@media(max-width:560px){
+  .contact-bar{flex-direction:column;align-items:flex-start;gap:10px}
+  .contact-bar-divider{display:none}
+  .contact-bar-note{display:none}
+}
+
+/* ── SCARCITY ── */
+.scarcity{text-align:center;margin-bottom:24px}
+.scarcity-pill{display:inline-block;background:#1D1D1B;color:#fff;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:7px 18px}
+
+/* ── FORM WRAPPER ── */
+.form-wrap{
+  background:#fff;
+  border:1px solid #E1DDDB;
+  padding:clamp(28px,5vw,40px) clamp(20px,4vw,32px);
+  position:relative;
+}
+.form-label{
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:#5a5a58;background:#fff;padding:0 10px;
+  position:absolute;top:-8px;left:24px;white-space:nowrap;
+}
+.form-loading{
+  text-align:center;padding:48px 20px;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#bbb;
+}
+.form-loading-dots::after{
+  content:'';animation:dots 1.4s infinite;
+}
+@keyframes dots{
+  0%{content:''}
+  33%{content:'.'}
+  66%{content:'..'}
+  100%{content:'...'}
+}
+
+/* ── THANK YOU STATE (shown when ?success=1) ── */
+.thankyou{display:none;text-align:center;padding:clamp(40px,7vw,72px) clamp(20px,4vw,40px)}
+.thankyou-ornament{font-size:2rem;margin-bottom:20px;color:#5a5a58}
+.thankyou-eyebrow{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#5a5a58;margin-bottom:14px}
+.thankyou-heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;line-height:1.15;color:#1D1D1B;margin-bottom:20px}
+.thankyou-heading em{font-style:italic;color:#5a5a58}
+.thankyou-divider{width:40px;height:1px;background:#1D1D1B;margin:0 auto 24px}
+.thankyou-body{font-size:.88rem;font-weight:300;line-height:1.8;color:#5a5a58;max-width:440px;margin:0 auto 28px}
+.thankyou-sig{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-style:italic;font-weight:300;color:#1D1D1B}
+.thankyou-sig span{display:block;font-family:'Jost',sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:#5a5a58;font-style:normal;margin-top:4px}
+.thankyou-phone{margin-top:28px;padding-top:24px;border-top:1px solid #E1DDDB;font-size:.78rem;font-weight:300;color:#5a5a58}
+.thankyou-phone a{color:#1D1D1B;font-weight:500}
+
+/* ── TRUST STRIP (bottom) ── */
+.trust-strip{
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px solid #E1DDDB;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(12px,3vw,28px);
+  flex-wrap:wrap;
+}
+.trust-item{font-size:.68rem;font-weight:300;color:#5a5a58;display:flex;align-items:center;gap:6px}
+.trust-item svg{width:12px;height:12px;stroke:#1D1D1B;fill:none;stroke-width:1.5;flex-shrink:0}
+.trust-item strong{font-weight:500;color:#1D1D1B}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:clamp(24px,4vw,40px) 20px;font-size:.65rem;letter-spacing:.06em;color:#bbb}
+.footer a{color:#5a5a58;text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="index.html" class="header-logo">
+    <img src="https://static.showit.co/200/ibAQ3QipFG3dX-FolSEJdw/320354/erica_land_photography_or_rockville_md_15.png"
+         alt="Erica Land Photography" width="160" height="38" decoding="async">
+  </a>
+  <div class="header-trust">
+    <div class="header-stars">
+      <svg class="header-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="header-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="header-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="header-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="header-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <span class="header-trust-txt"><strong>5.0</strong> · 39 Google Reviews</span>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main class="page">
+
+  <p class="eyebrow">Erica Land Photography · Rockville, MD</p>
+  <h1 class="heading">Let's plan <em>your senior session</em></h1>
+  <p class="subhead">Tell Erica a little about your senior and she'll be in touch within 24 hours — including your personalized quote. Sessions starting at $1,690.</p>
+
+  <!-- DIRECT CONTACT -->
+  <div class="contact-bar">
+    <span class="contact-bar-label">Rather call or text?</span>
+    <div class="contact-bar-divider"></div>
+    <a href="tel:+13015202470" class="contact-bar-link" id="phone-link">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.88 9.86 19.79 19.79 0 01.81 1.23 2 2 0 012.8 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.91-.91a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      (301) 520-2470
+    </a>
+    <div class="contact-bar-divider"></div>
+    <span class="contact-bar-note">Erica responds personally — usually same day</span>
+  </div>
+
+  <!-- SCARCITY -->
+  <div class="scarcity">
+    <span class="scarcity-pill">Class of 2027 spots are filling — don't wait</span>
+  </div>
+
+  <!-- FORM WRAPPER -->
+  <div class="form-wrap" id="form-wrap">
+    <span class="form-label">Inquiry Form</span>
+
+    <!-- THANK YOU STATE — shown when ?success=1 is in URL -->
+    <!-- To activate: in 17hats, set redirect URL to form.html?success=1 -->
+    <div class="thankyou" id="thankyou">
+      <div class="thankyou-ornament">✦</div>
+      <p class="thankyou-eyebrow">Inquiry Received</p>
+      <h2 class="thankyou-heading">You're one step closer<br><em>to something beautiful.</em></h2>
+      <div class="thankyou-divider"></div>
+      <p class="thankyou-body">Erica reads every inquiry personally. She'll be in touch within 24 hours with your personalized quote and next steps. Watch for an email from Erica@ericalandphotography.com.</p>
+      <p class="thankyou-sig">Erica Land<span>Photographer · Rockville, MD</span></p>
+      <div class="thankyou-phone">
+        Have a question in the meantime? Text or call Erica directly at
+        <a href="tel:+13015202470">(301) 520-2470</a>
+      </div>
+    </div>
+
+    <!-- FORM STATE — shown by default -->
+    <div id="form-state">
+      <div id="form-loading" class="form-loading">
+        Loading<span class="form-loading-dots"></span>
+      </div>
+      <!--
+        17hats form embedded eagerly (no lazy loading).
+        This page has no heavy content above the form, so the
+        iframe starts loading immediately on page render.
+      -->
+      <iframe
+        id="hats-form"
+        name="lc_contact_form"
+        title="Senior portrait inquiry form"
+        frameborder="0"
+        width="100%"
+        height="650"
+        src="https://ericalandphotography.17hats.com/p#/embed/wnpgbdtkznhxvnvhtwwzszksvtzkstxr"
+        style="display:none"
+        loading="eager"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>Best of Bethesda &amp; Potomac <strong>2026</strong></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>Response within <strong>24 hours</strong></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span><strong>20+ years</strong> serving the DMV</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Erica Land Photography · Rockville, MD · <a href="index.html">← Back to main page</a></p>
+  <p style="margin-top:6px">© 2025 Erica Land Photography · All Rights Reserved</p>
+</footer>
+
+<!-- ================================================================
+     TRACKING
+     ================================================================ -->
+<script>
+// ── META PIXEL ──────────────────────────────────────────────────
+!function(f,b,e,v,n,t,s){
+  if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','736062361464846');
+fbq('track','PageView');
+
+// ViewContent — fires on every load of this page.
+// Tells Meta this person explicitly navigated to the form page.
+// Use this as a custom conversion in Events Manager for a
+// future "form page visit" optimization event if needed.
+fbq('track','ViewContent',{
+  content_name:'Senior Portrait Inquiry Form',
+  content_category:'Senior Photography',
+  value:1690,
+  currency:'USD'
+});
+
+// ── LEAD EVENT — fires when 17hats redirects back with ?success=1 ──
+// Setup: In 17hats > form settings, set redirect URL to:
+//   https://seniors.ericalandphotography.com/form.html?success=1
+// When user submits, 17hats redirects here, this script fires Lead.
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('success')==='1'){
+    // Fire the standard Lead event — this is what you want
+    // your campaign to eventually optimize for
+    fbq('track','Lead',{
+      content_name:'Senior Portrait Inquiry',
+      content_category:'Senior Photography',
+      value:1690,
+      currency:'USD'
+    });
+
+    // Show thank-you state, hide form
+    document.getElementById('thankyou').style.display='block';
+    document.getElementById('form-state').style.display='none';
+
+    // Clean the URL so refreshing doesn't re-fire
+    if(window.history && window.history.replaceState){
+      window.history.replaceState({},'',window.location.pathname);
+    }
+  }
+})();
+
+// ── PHONE TAP ────────────────────────────────────────────────────
+document.getElementById('phone-link').addEventListener('click',function(){
+  fbq('trackCustom','DirectContact',{
+    method:'phone',
+    page:'form_page',
+    source:document.referrer||'direct'
+  });
+});
+
+// ── IFRAME LOAD HANDLING ─────────────────────────────────────────
+(function(){
+  var frame=document.getElementById('hats-form');
+  var loader=document.getElementById('form-loading');
+  if(!frame) return;
+
+  function showFrame(){
+    frame.style.display='block';
+    if(loader) loader.style.display='none';
+  }
+
+  frame.addEventListener('load',showFrame,{once:true});
+  // Fallback: show after 3.5s regardless
+  setTimeout(showFrame,3500);
+
+  // 17hats iframeSizer for auto-height
+  var s=document.createElement('script');
+  s.src='https://ericalandphotography.17hats.com/vendor/iframeSizer.min.js';
+  s.async=true;
+  document.body.appendChild(s);
+})();
+
+// ── CLARITY ──────────────────────────────────────────────────────
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,"clarity","script","wcntmthifk");
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=736062361464846&ev=PageView&noscript=1" alt=""></noscript>
+
+</body>
+</html>
