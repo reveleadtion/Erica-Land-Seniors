@@ -777,117 +777,101 @@ document.querySelectorAll('.r').forEach(el=>io.observe(el));
 })();
 
 // ============================================================
-// ANALYTICS & PIXEL
+// PIXEL — loads immediately, not deferred
+// QualifiedLead fires on CTA click or phone tap
 // ============================================================
+!function(f,b,e,v,n,t,s){
+  if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','736062361464846');
+fbq('track','PageView');
+
+var _pageStart=Date.now();
+var _qualifiedFired=false;
+var _pricingFired=false;
+
+// Pricing viewed (secondary signal)
+var _pkgEl=document.getElementById('packages');
+if(_pkgEl){
+  var _pkgObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting&&!_pricingFired){
+        _pricingFired=true;
+        fbq('trackCustom','ViewedPricing',{page:window.location.href});
+        _pkgObs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  _pkgObs.observe(_pkgEl);
+}
+
+// ---- QUALIFIED LEAD + all CTA tracking ----
+// Attached immediately — not inside any deferred wrapper
+// so no click can ever fire before this listener is ready
+document.addEventListener('click',function(e){
+
+  // "Get Your Personal Quote" buttons → form.html
+  var cta=e.target.closest('a.cta-quote');
+  if(cta){
+    if(!_qualifiedFired){
+      _qualifiedFired=true;
+      fbq('trackCustom','QualifiedLead',{
+        trigger:'cta_click',
+        cta_text:cta.textContent.trim().slice(0,50),
+        time_on_page:Math.round((Date.now()-_pageStart)/1000),
+        saw_pricing:_pricingFired,
+        page:window.location.href
+      });
+    }
+    fbq('trackCustom','ClickedCTA',{
+      cta_text:cta.textContent.trim().slice(0,50),
+      destination:'form_page',
+      page:window.location.href
+    });
+  }
+
+  // Phone tap
+  var tel=e.target.closest('a[href^="tel:"]');
+  if(tel){
+    fbq('trackCustom','DirectContact',{method:'phone',page:window.location.href});
+    if(!_qualifiedFired){
+      _qualifiedFired=true;
+      fbq('trackCustom','QualifiedLead',{
+        trigger:'phone_tap',
+        time_on_page:Math.round((Date.now()-_pageStart)/1000),
+        saw_pricing:_pricingFired,
+        page:window.location.href
+      });
+    }
+  }
+
+  // See Pricing anchor clicks
+  var pricingCta=e.target.closest('a[href="#packages"]');
+  if(pricingCta){
+    fbq('trackCustom','ClickedSeePricing',{page:window.location.href});
+  }
+});
+
+// Clarity — deferred, doesn't affect conversion tracking
 (function(){
   var fired=false;
-  function loadTracking(){
-    if(fired) return;
-    fired=true;
-
-    // Microsoft Clarity
+  function loadClarity(){
+    if(fired)return;fired=true;
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window,document,"clarity","script","wcntmthifk");
-
-    // Meta Pixel
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
-    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','736062361464846');
-    fbq('track','PageView');
-
-    var pageStart=Date.now();
-    var qualifiedFired=false;
-    var pricingFired=false;
-
-    // -----------------------------------------------------------
-    // QUALIFIED LEAD EVENT — REDEFINED
-    // -----------------------------------------------------------
-    // Previously fired on scroll-past two sections (passive behavior).
-    // Now fires ONLY on explicit user intent:
-    //   1. Click of any "Get Your Personal Quote" CTA (.cta-quote links → form)
-    //   2. Tap of the phone/text link (tel:)
-    //
-    // This gives Meta a real behavioral signal — someone who clicked
-    // to take action — instead of someone who scrolled by.
-    // The campaign optimization event name stays "QualifiedLead"
-    // so no campaign restructure is needed.
-    // -----------------------------------------------------------
-
-    // Track when pricing section is viewed (secondary signal, no longer part of QL)
-    var pricingObserver=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting && !pricingFired){
-          pricingFired=true;
-          fbq('trackCustom','ViewedPricing',{page:window.location.href});
-          pricingObserver.disconnect();
-        }
-      });
-    },{threshold:0.3});
-    var pkgEl=document.getElementById('packages');
-    if(pkgEl) pricingObserver.observe(pkgEl);
-
-    // Main intent listener
-    document.addEventListener('click',function(e){
-
-      // CTA clicks — "Get Your Personal Quote" buttons going to form
-      var cta=e.target.closest('a.cta-quote');
-      if(cta){
-        // Fire QualifiedLead on CTA click (explicit intent)
-        if(!qualifiedFired){
-          qualifiedFired=true;
-          fbq('trackCustom','QualifiedLead',{
-            trigger:'cta_click',
-            cta_text:cta.textContent.trim().slice(0,50),
-            time_on_page:Math.round((Date.now()-pageStart)/1000),
-            saw_pricing:pricingFired,
-            page:window.location.href
-          });
-        }
-        fbq('trackCustom','ClickedCTA',{
-          cta_text:cta.textContent.trim().slice(0,50),
-          destination:'form_page',
-          page:window.location.href
-        });
-      }
-
-      // Phone / text tap — also a strong intent signal
-      var tel=e.target.closest('a[href^="tel:"]');
-      if(tel){
-        fbq('trackCustom','DirectContact',{method:'phone',page:window.location.href});
-        // Phone tap also qualifies as a QualifiedLead
-        if(!qualifiedFired){
-          qualifiedFired=true;
-          fbq('trackCustom','QualifiedLead',{
-            trigger:'phone_tap',
-            time_on_page:Math.round((Date.now()-pageStart)/1000),
-            saw_pricing:pricingFired,
-            page:window.location.href
-          });
-        }
-      }
-
-      // Pricing scroll CTAs (See Pricing button clicks)
-      var pricingCta=e.target.closest('a[href="#packages"]');
-      if(pricingCta){
-        fbq('trackCustom','ClickedSeePricing',{page:window.location.href});
-      }
-    });
   }
-
   if('requestIdleCallback' in window){
-    requestIdleCallback(loadTracking,{timeout:2500});
+    requestIdleCallback(loadClarity,{timeout:3000});
   } else {
-    setTimeout(loadTracking,2000);
+    setTimeout(loadClarity,2500);
   }
-  ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){
-    window.addEventListener(ev,loadTracking,{once:true,passive:true});
-  });
 })();
 </script>
 
