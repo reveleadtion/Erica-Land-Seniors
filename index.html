@@ -813,25 +813,31 @@ if(_pkgEl){
 // Attached immediately — not inside any deferred wrapper
 // so no click can ever fire before this listener is ready
 document.addEventListener('click',function(e){
+console.log('click target:', e.target, 'closest cta-quote:', e.target.closest('a.cta-quote'));
 
-  // "Get Your Personal Quote" buttons → form.html
-  var cta=e.target.closest('a.cta-quote');
+  // "Get Your Personal Quote" buttons — match by href destination
+  // Catches ALL links pointing to the form page regardless of class
+  var cta=e.target.closest('a[href]');
   if(cta){
-    if(!_qualifiedFired){
-      _qualifiedFired=true;
-      fbq('trackCustom','QualifiedLead',{
-        trigger:'cta_click',
+    var href=(cta.getAttribute('href')||'').toLowerCase();
+    var isFormLink=href.indexOf('form')!==-1||href.indexOf('quote')!==-1;
+    if(isFormLink){
+      if(!_qualifiedFired){
+        _qualifiedFired=true;
+        fbq('trackCustom','QualifiedLead',{
+          trigger:'cta_click',
+          cta_text:cta.textContent.trim().slice(0,50),
+          time_on_page:Math.round((Date.now()-_pageStart)/1000),
+          saw_pricing:_pricingFired,
+          page:window.location.href
+        });
+      }
+      fbq('trackCustom','ClickedCTA',{
         cta_text:cta.textContent.trim().slice(0,50),
-        time_on_page:Math.round((Date.now()-_pageStart)/1000),
-        saw_pricing:_pricingFired,
+        destination:'form_page',
         page:window.location.href
       });
     }
-    fbq('trackCustom','ClickedCTA',{
-      cta_text:cta.textContent.trim().slice(0,50),
-      destination:'form_page',
-      page:window.location.href
-    });
   }
 
   // Phone tap
