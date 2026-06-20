@@ -140,6 +140,19 @@ body{
   100%{content:'...'}
 }
 
+/* ── IFRAME FALLBACK (in-app browser safety net) ── */
+.form-helper{margin-top:16px;text-align:center;font-size:.72rem;font-weight:300;color:#5a5a58;line-height:1.7}
+.form-helper a{color:#1D1D1B;font-weight:500;white-space:nowrap}
+.form-fallback{text-align:center;padding:8px 4px 4px}
+.form-fallback-lead{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:300;color:#1D1D1B;margin-bottom:10px}
+.form-fallback-sub{font-size:.82rem;font-weight:300;line-height:1.7;color:#5a5a58;max-width:400px;margin:0 auto 24px}
+.form-fallback-btn{display:block;background:#1D1D1B;color:#fff;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:16px 20px;text-decoration:none;transition:background .2s}
+.form-fallback-btn:hover{background:#000}
+.form-fallback-or{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#bbb;margin:16px 0}
+.form-fallback-call{display:block;border:1px solid #1D1D1B;color:#1D1D1B;font-size:.82rem;font-weight:500;padding:15px 20px;text-decoration:none;transition:all .2s}
+.form-fallback-call:hover{background:#1D1D1B;color:#fff}
+.form-fallback-note{font-size:.72rem;font-weight:300;color:#5a5a58;margin-top:20px}
+
 /* ── THANK YOU STATE (shown when ?success=1) ── */
 .thankyou{display:none;text-align:center;padding:clamp(40px,7vw,72px) clamp(20px,4vw,40px)}
 .thankyou-ornament{font-size:2rem;margin-bottom:20px;color:#5a5a58}
@@ -257,6 +270,25 @@ body{
         style="display:none"
         loading="eager"
       ></iframe>
+
+      <!-- Persistent escape hatch — shown once the iframe is displayed,
+           in case it loads blank inside an in-app browser. -->
+      <p class="form-helper" id="form-helper" style="display:none">
+        Form not showing?
+        <a href="https://ericalandphotography.17hats.com/p#/embed/wnpgbdtkznhxvnvhtwwzszksvtzkstxr" target="_blank" rel="noopener" id="form-open-tab">Open it in your browser</a>
+        or <a href="tel:+13015202470" id="helper-phone">call/text (301) 520-2470</a>.
+      </p>
+
+      <!-- Full fallback — replaces the iframe if it never loads
+           (common in Instagram/Facebook in-app browsers). -->
+      <div id="form-fallback" class="form-fallback" style="display:none">
+        <p class="form-fallback-lead">Let's connect the easy way</p>
+        <p class="form-fallback-sub">The embedded form didn't load — this can happen inside Instagram or Facebook's in-app browser. Pick whichever is easiest:</p>
+        <a href="https://ericalandphotography.17hats.com/p#/embed/wnpgbdtkznhxvnvhtwwzszksvtzkstxr" target="_blank" rel="noopener" class="form-fallback-btn" id="form-open-tab-full">Open the form in your browser →</a>
+        <div class="form-fallback-or">or</div>
+        <a href="tel:+13015202470" class="form-fallback-call" id="fallback-phone">Call or text Erica · (301) 520-2470</a>
+        <p class="form-fallback-note">Erica responds personally — usually same day.</p>
+      </div>
     </div>
   </div>
 
@@ -344,20 +376,35 @@ document.getElementById('phone-link').addEventListener('click',function(){
   });
 });
 
-// ── IFRAME LOAD HANDLING ─────────────────────────────────────────
+// ── IFRAME LOAD HANDLING + IN-APP BROWSER FALLBACK ───────────────
 (function(){
   var frame=document.getElementById('hats-form');
   var loader=document.getElementById('form-loading');
+  var helper=document.getElementById('form-helper');
+  var fallback=document.getElementById('form-fallback');
   if(!frame) return;
+  var loaded=false;
 
   function showFrame(){
+    if(loaded) return;
+    loaded=true;
     frame.style.display='block';
     if(loader) loader.style.display='none';
+    if(helper) helper.style.display='block';   // persistent escape hatch
+    if(fallback) fallback.style.display='none'; // recover if it loaded late
+  }
+  function showFallback(){
+    if(loaded) return;                 // iframe already came up — leave it
+    if(frame) frame.style.display='none';
+    if(loader) loader.style.display='none';
+    if(fallback) fallback.style.display='block';
+    if(window.fbq) fbq('trackCustom','FormFallbackShown',{page:'form_page'});
   }
 
   frame.addEventListener('load',showFrame,{once:true});
-  // Fallback: show after 3.5s regardless
-  setTimeout(showFrame,3500);
+  // If the iframe hasn't fired load within 6s, assume it's blocked
+  // (common in in-app browsers) and surface the fallback options.
+  setTimeout(showFallback,6000);
 
   // 17hats iframeSizer for auto-height
   var s=document.createElement('script');
@@ -365,6 +412,21 @@ document.getElementById('phone-link').addEventListener('click',function(){
   s.async=true;
   document.body.appendChild(s);
 })();
+
+// ── FALLBACK INTERACTION TRACKING ────────────────────────────────
+// Lets Meta/Clarity show how people recover when the embed fails.
+['form-open-tab','form-open-tab-full'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el) el.addEventListener('click',function(){
+    if(window.fbq) fbq('trackCustom','FormOpenedInBrowser',{page:'form_page'});
+  });
+});
+['helper-phone','fallback-phone'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el) el.addEventListener('click',function(){
+    if(window.fbq) fbq('trackCustom','DirectContact',{method:'phone',page:'form_page_fallback'});
+  });
+});
 
 // ── CLARITY ──────────────────────────────────────────────────────
 (function(c,l,a,r,i,t,y){
